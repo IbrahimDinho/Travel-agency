@@ -1,10 +1,10 @@
 package main.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import main.dao.TourDAO;
 import main.model.Tour;
 
 @Controller
 public class HomeController {
 
-	private List<Tour> tours = new ArrayList<>();
+	@Autowired
+	private TourDAO tourDAO;
 	
 	@RequestMapping("/")
 	public String getHome() {
@@ -36,12 +38,13 @@ public class HomeController {
 		if(bindingResult.hasErrors()) {
 			return "form";
 		}
-		tours.add(tour);
+		tourDAO.saveOrUpdate(tour);
 		return "redirect:showOffer";
 	}
 	
 	@GetMapping("/showOffer")
 	public String getTours(Model model) {
+		List<Tour> tours = tourDAO.getAll();
 		model.addAttribute("tours", tours);
 		return "tours";
 	}

@@ -10,6 +10,9 @@
 	
 	<form action="#" th:action="@{/processForm}" th:object="${tour}" method="post">
 		<div>
+			<input type="hidden" th:field="*{id}">
+		</div>
+		<div>
 			<div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			<label>Name</label>
 			<input type="text" th:field="*{name}">

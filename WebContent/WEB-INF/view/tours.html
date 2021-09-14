@@ -11,20 +11,26 @@
 	<div>
 		<table th:if="${!tours.empty}">
 			<tr>
-				<td>Name</td>
-				<td>Code</td>
-				<td>Continent</td>
-				<td>Date</td>
-				<td>Duration</td>
-				<td>All Inclusive</td>
+				<th>#</th>
+				<th>Name</th>
+				<th>Code</th>
+				<th>Continent</th>
+				<th>Date</th>
+				<th>Duration</th>
+				<th>All Inclusive</th>
+				<th>EDIT</th>
+				<th>REMOVE</th>
 			</tr>
 			<tr th:each="tour : ${tours}">
+				<td th:text="${tourStat.count}"></td>
 				<td th:text="${tour.name}"></td>
 				<td th:text="${tour.code}"></td>
 				<td th:text="${tour.continent}"></td>
 				<td th:text="${tour.date}"></td>
 				<td th:text="${tour.duration}"></td>
 				<td th:text="${tour.allInclusive}"></td>
+				<td><a th:href="@{/editTour/} + ${tour.id}">Edit</a></td>
+				<td><a th:href="@{/deleteTour/} + ${tour.id}">Delete</a></td>
 			</tr>
 		</table>
 		<span th:if="${tours.empty}">No tours in the offer</span>
