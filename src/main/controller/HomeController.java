@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -48,5 +49,26 @@ public class HomeController {
 		model.addAttribute("tours", tours);
 		return "tours";
 	}
+	// to make RESTFUL change to delete
+	@GetMapping("/deleteTour/{id}")
+	public String deleteTour(@PathVariable int id) {
+		Tour tour = tourDAO.getById(id);
+		if (tour != null) {
+			tourDAO.delete(id);
+		}
+		return "redirect:/showOffer";
+	}
+	
+	@GetMapping("/editTour/{id}")
+	public String editTour(@PathVariable int id, Model model) {
+		Tour tour = tourDAO.getById(id);
+		if (tour!=null) {
+			model.addAttribute("tour",tour);
+			return "form";
+		}
+		
+		return "redirect:/showOffer";
+	}
+	
 	
 }
