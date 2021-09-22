@@ -19,7 +19,9 @@
 				<th>Duration</th>
 				<th>All Inclusive</th>
 				<th>EDIT</th>
+				<th>EDIT details</th>
 				<th>REMOVE</th>
+				<th>Details</th>
 			</tr>
 			<tr th:each="tour : ${tours}">
 				<td th:text="${tourStat.count}"></td>
@@ -30,7 +32,9 @@
 				<td th:text="${tour.duration}"></td>
 				<td th:text="${tour.allInclusive}"></td>
 				<td><a th:href="@{/editTour/} + ${tour.id}">Edit</a></td>
+				<td><a th:href="@{/editTourDetails/} + ${tour.id}">Edit Details</a></td>
 				<td><a th:href="@{/deleteTour/} + ${tour.id}">Delete</a></td>
+				<td><a th:href="@{/showTourDetails/} + ${tour.id}">Details</a></td>
 			</tr>
 		</table>
 		<span th:if="${tours.empty}">No tours in the offer</span>
