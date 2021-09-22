@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>FORM Details</title>
+</head>
+<body>
+<div>
+		<div>
+			<div>
+			</div>
+		
+			<div>
+				<h1>Add/edit tour details</h1>
+				
+				<form action="#" th:action="@{/processFormTourDetails}" th:object="${tourDetails}" method="post">
+				
+					<div >
+						<input type="hidden" th:field="*{id}">
+					</div>
+				
+					<div>
+						<label>Country</label>
+						<input type="text" th:field="*{country}">
+					</div>
+					
+					<div>
+						<label>Description</label>
+						<textarea th:field="*{description}"></textarea>
+					</div>
+					
+					<div>
+						<div>
+							<input type="submit" value="Submit">
+						</div>
+						<div>
+							<a th:href="@{/showOffer}">Back</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
