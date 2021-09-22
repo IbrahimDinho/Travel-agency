@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Tour details page</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h1 th:text="${tour.name} + ' details'"></h1>
+		</div>
+		
+		<div>
+			<label>Country</label>
+			<input type="text" th:field="${tour.tourDetails.country}" readonly>
+		</div>
+		
+		<div>
+			<label>Tour description</label>
+			<textarea th:field="${tour.tourDetails.description}" readonly></textarea>
+		</div>
+		
+		<div>
+			<a th:href="@{/showOffer}">Back</a>
+		</div>
+	</div>
+</body>
+</html>
