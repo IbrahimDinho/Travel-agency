@@ -46,6 +46,7 @@ public class WebConfig implements WebMvcConfigurer {
 		return viewResolver;
 	}
 	
+	// 3 methods below Configuration for validation to use message.properties
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();

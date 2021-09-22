@@ -2,11 +2,14 @@ package main.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -48,6 +51,18 @@ public class Tour {
 	
 	@Column(name = "all_inclusive")
 	private boolean allInclusive = false;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "tour_details_id")
+	private TourDetails tourDetails;
+
+	public TourDetails getTourDetails() {
+		return tourDetails;
+	}
+
+	public void setTourDetails(TourDetails tourDetails) {
+		this.tourDetails = tourDetails;
+	}
 
 	public String getName() {
 		return name;

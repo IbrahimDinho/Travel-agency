@@ -2,6 +2,7 @@ package main.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import main.dao.TourDAO;
 import main.model.Tour;
 
 @Service
+@Transactional
 public class TourServiceImpl implements TourService{
 	
 	@Autowired
