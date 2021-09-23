@@ -28,7 +28,7 @@ public class TourController {
 	
 	@GetMapping("/addTour")
 	public String showForm(Model model) {
-		//model and attribute (row) can be accessed in view
+		//model and attribute (row) can now be accessed in view
 		model.addAttribute("tour", new Tour());
 		return "form";
 	}
@@ -48,7 +48,7 @@ public class TourController {
 		model.addAttribute("tours", tours);
 		return "tours";
 	}
-	// to make RESTFUL change to delete
+	// to make RESTFUL change to delete mapping
 	@GetMapping("/deleteTour/{id}")
 	public String deleteTour(@PathVariable int id) {
 		Tour tour = tourService.getById(id);

@@ -3,13 +3,17 @@ package main.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import main.model.TourDetails;
 
+@Repository
 public class TourDetailsDAOImpl  implements TourDetailsDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
 	@Override
 	public TourDetails getById(int id) {
 		// TODO Auto-generated method stub

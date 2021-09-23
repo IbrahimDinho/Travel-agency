@@ -11,8 +11,10 @@ import main.model.TourDetails;
 @Service
 @Transactional
 public class TourDetailsServiceImpl implements TourDetailsService{
+	
 	@Autowired
 	private TourDetailsDAO tourDetailsDAO;
+	
 	@Override
 	public TourDetails getById(int id) {
 		// TODO Auto-generated method stub
