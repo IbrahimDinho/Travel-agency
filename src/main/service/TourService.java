@@ -5,7 +5,8 @@ import java.util.List;
 import main.model.Tour;
 
 public interface TourService {
-	//CRUD operations
+	
+	//CRUD operations to DB that I need
 	
 		public List<Tour> getAll();
 		

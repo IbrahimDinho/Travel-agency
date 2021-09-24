@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Comment Form page</title>
+</head>
+<body>
+	<div>
+				<h1>Add new comment</h1>
+				
+				<form action="#" th:action="@{/processFormComment}" th:object="${comment}" method="post">
+				
+					<div>
+						<input type="hidden"th:field="*{id}">
+					</div>
+
+					<div>
+						<label>Tour</label>
+						
+						<select th:field="*{tour.id}">
+							<option th:each="tour : ${tours}"
+									th:value="${tour.id}"
+									th:text="${tour.name}">
+							</option>
+						</select>
+					</div>
+					
+					<div>
+						<label>Content</label>
+						<input type="text" th:field="*{content}">
+					</div>
+
+					<div>
+						<div>
+							<input type="submit" value="Submit">
+						</div>
+						<div>
+							<a th:href="@{/}">Back</a>
+						</div>
+					</div>
+				</form>
+			</div>
+
+</body>
+</html>
