@@ -12,7 +12,7 @@ import main.model.Tour;
 
 @Repository
 public class TourDAOImpl implements TourDAO{
-
+	// session is a connection to the DB.
 	@Autowired
 	private SessionFactory sessionFactory;
 	
