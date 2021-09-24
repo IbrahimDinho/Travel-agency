@@ -1,6 +1,7 @@
 package main.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
@@ -23,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Tour {
 	
-
+	// static constant values of type Continent
 	public enum Continent {
 		AFRICA, ASIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA;
 	}
@@ -53,8 +55,20 @@ public class Tour {
 	private boolean allInclusive = false;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "tour_details_id")
+	@JoinColumn(name = "tour_details_id") //fk
 	private TourDetails tourDetails;
+	
+	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true) // mapped by is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
+	private List<Comment> comments;
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 
 	public TourDetails getTourDetails() {
 		return tourDetails;
