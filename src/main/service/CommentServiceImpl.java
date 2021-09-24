@@ -14,6 +14,7 @@ public class CommentServiceImpl implements CommentService{
 
 	@Autowired
 	private CommentDAO commentDAO;
+	
 	@Override
 	public void save(Comment c) {
 		// TODO Auto-generated method stub

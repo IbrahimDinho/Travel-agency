@@ -21,6 +21,17 @@
 			<textarea th:field="${tour.tourDetails.description}" readonly></textarea>
 		</div>
 		
+		<div th:if="${tour.comments.empty}">
+			<h2>There are no comments at the moment</h2>
+		</div>
+		<div>
+			<div th:if="${!tour.comments.empty}">
+				<h2>Comment</h2>
+				<ul th:each="comment : ${tour.comments}">
+					<li th:text=${comment.content}></li>
+				</ul>
+			</div>
+		</div>
 		<div>
 			<a th:href="@{/showOffer}">Back</a>
 		</div>

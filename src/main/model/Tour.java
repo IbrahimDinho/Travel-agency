@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,7 +59,7 @@ public class Tour {
 	@JoinColumn(name = "tour_details_id") //fk
 	private TourDetails tourDetails;
 	
-	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true) // mapped by is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
+	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER) // mappedBy is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
 	private List<Comment> comments;
 	
 	public List<Comment> getComments() {

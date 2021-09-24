@@ -15,7 +15,7 @@ public class Comment {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private String id;
+	private int id;
 	
 	@Column(length=1000)
 	private String content;
@@ -24,11 +24,11 @@ public class Comment {
 	@JoinColumn(name = "tour_id") // Foreign key with field of primary key of tour
 	private Tour tour; // name used for mapped by (in other class)  so now bidirectional.
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
