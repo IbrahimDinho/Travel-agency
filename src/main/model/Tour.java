@@ -59,7 +59,8 @@ public class Tour {
 	@JoinColumn(name = "tour_details_id") //fk
 	private TourDetails tourDetails;
 	
-	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER) // mappedBy is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
+	// removed fetch being eager too much overhead instead code in TourServiceImpl
+	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true) // mappedBy is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
 	private List<Comment> comments;
 	
 	public List<Comment> getComments() {

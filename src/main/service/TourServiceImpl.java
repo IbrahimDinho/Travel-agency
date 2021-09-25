@@ -28,6 +28,11 @@ public class TourServiceImpl implements TourService{
 	public Tour getById(int id) {
 		// TODO Auto-generated method stub
 		return tourDAO.getById(id);
+		
+//		Tour tour = tourDAO.getById(id);
+//		// allows you to get allow comments related to tour instead of eager fetch. +invoke any operation easiest is size
+//		tour.getComments().size();
+//		return tour;
 	}
 
 	@Override
@@ -51,6 +56,12 @@ public class TourServiceImpl implements TourService{
 			tour.setTourDetails(new TourDetails());
 			saveOrUpdate(tour);
 		}
+	}
+
+	@Override
+	public Tour getByIdwithComments(int id) {
+		// TODO Auto-generated method stub
+		return tourDAO.getByIdwithComments(id);
 	}
 	
 

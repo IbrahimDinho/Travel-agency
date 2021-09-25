@@ -43,6 +43,13 @@ public class TourDAOImpl implements TourDAO{
 		
 		
 	}
+
+	@Override
+	public Tour getByIdwithComments(int id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery("from Tour t left join fetch t.comments where t.id = :id", Tour.class).setParameter("id", id).getSingleResult();
+	}
 	
 	
 
