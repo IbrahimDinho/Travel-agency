@@ -19,4 +19,6 @@ public interface TourService {
 		public void addTourDetailsifNotExist(Tour tour);
 		
 		public Tour getByIdwithComments(int id);
+		
+		public void addUserToTour(int id, int userId);
 }

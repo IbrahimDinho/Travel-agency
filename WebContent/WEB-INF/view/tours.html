@@ -22,6 +22,7 @@
 				<th>EDIT details</th>
 				<th>REMOVE</th>
 				<th>Details</th>
+				<th>Sign in</th>
 			</tr>
 			<tr th:each="tour : ${tours}">
 				<td th:text="${tourStat.count}"></td>
@@ -35,6 +36,9 @@
 				<td><a th:href="@{/editTourDetails/} + ${tour.id}">Edit Details</a></td>
 				<td><a th:href="@{/deleteTour/} + ${tour.id}">Delete</a></td>
 				<td><a th:href="@{/showTourDetails/} + ${tour.id}">Details</a></td>
+				
+				<td><a th:href="@{/addUserToTour/{id}/{userId}(id =${tour.id}, userId=1)}">1</a></td>
+				<td><a th:href="@{/addUserToTour/{id}/{userId}(id =${tour.id}, userId=2)}">2</a></td>
 			</tr>
 		</table>
 		<span th:if="${tours.empty}">No tours in the offer</span>
