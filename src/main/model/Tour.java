@@ -65,7 +65,7 @@ public class Tour {
 	private TourDetails tourDetails;
 	
 	// removed fetch being eager too much overhead instead code in TourServiceImpl
-	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL, orphanRemoval = true) // mappedBy is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
+	@OneToMany(mappedBy= "tour", cascade = CascadeType.ALL) // mappedBy is the name of the field in comments class that relates to this class. Should find name tour in Comment class!
 	private List<Comment> comments;
 	
 	@ManyToMany

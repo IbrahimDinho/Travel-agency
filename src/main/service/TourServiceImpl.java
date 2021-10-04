@@ -32,7 +32,7 @@ public class TourServiceImpl implements TourService{
 	@Override
 	public Tour getById(int id) {
 		// TODO Auto-generated method stub
-		return tourRepository.getOne(id);
+		return tourRepository.findById(id).get();
 		
 //		Tour tour = tourDAO.getById(id);
 //		// allows you to get allow comments related to tour instead of eager fetch. +invoke any operation easiest is size
