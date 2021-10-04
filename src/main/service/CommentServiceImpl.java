@@ -5,20 +5,20 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.dao.CommentDAO;
 import main.model.Comment;
+import main.repository.CommentRepository;
 
 @Service
 @Transactional 
 public class CommentServiceImpl implements CommentService{
 
 	@Autowired
-	private CommentDAO commentDAO;
+	private CommentRepository commentRepository;
 	
 	@Override
 	public void save(Comment c) {
-		// TODO Auto-generated method stub
-		commentDAO.save(c);
+		// change to save all?
+		commentRepository.save(c);
 		return;
 	}
 	

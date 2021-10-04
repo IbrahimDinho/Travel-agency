@@ -13,6 +13,16 @@
 			<input type="hidden" th:field="*{id}">
 		</div>
 		<div>
+			<input type="hidden" th:field="*{tourDetails.id}">
+		</div>
+		<div>
+			<input type="hidden" th:field="*{tourDetails.country}">
+		</div>
+		<div>
+			<input type="hidden" th:field="*{tourDetails.description}">
+		</div>
+		
+		<div>
 			<div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			<label>Name</label>
 			<input type="text" th:field="*{name}">

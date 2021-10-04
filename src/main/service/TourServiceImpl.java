@@ -8,32 +8,31 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.dao.TourDAO;
-import main.dao.UserDAO;
 import main.model.Tour;
-import main.model.TourDetails;
 import main.model.User;
+import main.repository.TourRepository;
+import main.repository.UserRepository;
 
 @Service
 @Transactional
 public class TourServiceImpl implements TourService{
 	
 	@Autowired
-	private TourDAO tourDAO;
+	private TourRepository tourRepository;
 	
 	@Autowired
-	private UserDAO userDAO;
+	private UserRepository userRepository;
 	
 	@Override
 	public List<Tour> getAll() {
 		// TODO Auto-generated method stub
-		return tourDAO.getAll();
+		return tourRepository.findAll();
 	}
 
 	@Override
 	public Tour getById(int id) {
 		// TODO Auto-generated method stub
-		return tourDAO.getById(id);
+		return tourRepository.getOne(id);
 		
 //		Tour tour = tourDAO.getById(id);
 //		// allows you to get allow comments related to tour instead of eager fetch. +invoke any operation easiest is size
@@ -44,30 +43,23 @@ public class TourServiceImpl implements TourService{
 	@Override
 	public void saveOrUpdate(Tour tour) {
 		// TODO Auto-generated method stub
-		tourDAO.saveOrUpdate(tour);
+		tourRepository.save(tour);
 		return;
 	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		tourDAO.delete(id);
+		tourRepository.deleteById(id);
 		return;
 	}
 
-	@Override
-	public void addTourDetailsifNotExist(Tour tour) {
-		// TODO Auto-generated method stub
-		if (tour.getTourDetails() == null) {
-			tour.setTourDetails(new TourDetails());
-			saveOrUpdate(tour);
-		}
-	}
+
 
 	@Override
 	public Tour getByIdwithComments(int id) {
 		// TODO Auto-generated method stub
-		return tourDAO.getByIdwithComments(id);
+		return tourRepository.getByIdwithComments(id);
 	}
 
 	@Override
@@ -77,7 +69,7 @@ public class TourServiceImpl implements TourService{
 		if (tour.getUsers() == null) {
 			tour.setUsers(new ArrayList<>());
 		}
-		User user = userDAO.getById(userId);
+		User user = userRepository.getOne(userId);
 		if (user != null) {
 			tour.getUsers().add(user);
 			saveOrUpdate(tour);
