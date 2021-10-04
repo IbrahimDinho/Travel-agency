@@ -1,6 +1,8 @@
 package main.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -74,6 +76,16 @@ public class TourServiceImpl implements TourService{
 			tour.getUsers().add(user);
 			saveOrUpdate(tour);
 		}
+	}
+
+	@Override
+	public List<Tour> getAllForNextMonth() {
+		// TODO Auto-generated method stub
+		Date currentDate = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(currentDate);;
+		calendar.add(Calendar.MONTH, 1);
+		return tourRepository.findByDateBetween(currentDate, calendar.getTime());
 	}
 	
 

@@ -20,4 +20,7 @@ public interface TourService {
 		public Tour getByIdwithComments(int id);
 		
 		public void addUserToTour(int id, int userId);
+		
+		public List<Tour> getAllForNextMonth();
+		
 }
