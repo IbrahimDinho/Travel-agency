@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Home page</title>
@@ -21,6 +22,28 @@
 	<p>
 		<a th:href="@{/addComment}">Add a comment</a>
 	</p>
+	<div>
+		<a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+		<a sec:authorize="!isAnonymous()" th:href="@{/logout}">Logout</a>
+	</div>
 	
+	<br>
+	<br>
+	<div>
+			<!-- How authorise and roles work -->
+			<p>Spring security examples</p>
+			<div sec:authorize="hasRole('ADMIN')">This part is visible to the admins</div>
+			<div sec:authorize="hasRole('EMPLOYEE')">This part is visible to the employee</div>
+			<div sec:authorize="hasRole('CLIENT')">This part is visible to the client</div>
+			<div sec:authorize="isAuthenticated()">This part is visible only to authenticated users</div>
+			<div>
+				Username: <span sec:authentication="name"></span>
+			</div>
+			<div>
+				User roles: <span sec:authorize="isAuthenticated()">
+								<span sec:authentication="principal.authorities"></span>
+							</span>
+			</div>
+		</div>
 </body>
 </html>

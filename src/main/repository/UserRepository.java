@@ -7,4 +7,6 @@ import main.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+	// check if user exists
+	public boolean existsByLogin(String login);
 }
