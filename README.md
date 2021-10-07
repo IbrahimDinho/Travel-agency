@@ -1,2 +1,2 @@
 # Travel-agency
-Web application using Spring MVC 
+Web application to learn Spring ecosystems. Made use of Spring MVC,Data,Security and REST.  
